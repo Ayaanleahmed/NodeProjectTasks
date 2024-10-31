@@ -1,18 +1,19 @@
+const {getTasks} =require ("../controllers.taskControllers");
 const { json } = require("formidable")
 
 const taskRoutes = (req,res)=>{
-    if(req.method ==='GET'){
-        getYasks(req,res)
+if(req.method ==='GET'){
+        getTasks(req,res)
     }else if(req.method ==='POST'){
-        createTask(req,res)
+        createTasks(req,res)
     }else if(req.method ==='PATCH'){
-        updateTask(req,res)
+        updateTasks(req,res)
 }else if(req.method ==='DELETE'){
-    deleteTask(req,res)
+    deleteTasks(req,res)
 
 }else {
-    res.writehead(404,'page not found',{ 'content_type':'application/json' })
-    req.end(json.strigify({
+    res.writehead(404,'page not found',{ 'content-type':'application/json' })
+    req.end(JSON.stringify({
         message: "unknown method required."
     }))
 
